@@ -10,7 +10,7 @@ def get_COS_recommendations(df, product, column = 'product'):
     df['ing#List'] = df['ing#List'].astype(str)
     tfidf = TfidfVectorizer(stop_words=[0])
     tfidf_matrix = tfidf.fit_transform(df['ing#List'])
-    cosine_sim = additive_chi2_kernel(tfidf_matrix, tfidf_matrix)
+    cosine_sim = linear_kernel(tfidf_matrix, tfidf_matrix)
     
     indices = pd.Series(df.index, index=df[column]).drop_duplicates()
     idx = indices[product]
@@ -38,7 +38,7 @@ def get_A0_recommendations(df, product):
 
     itemLookup = df.loc[idx]['ing#List']
     items = df['ing#List']
-    sim = [average_overlap(itemLookup,i) for i in items] ##change method here
+    sim = [average_overlap(itemLookup,i, .9) for i in items] ##change method here
 
     sim_scores = list(enumerate(sim))
 
@@ -62,7 +62,7 @@ def get_RBO_recommendations(df, product, rbo):
 
     itemLookup = df.loc[idx]['ing#List']
     items = df['ing#List']
-    sim = [rbo(itemLookup,i, .99) for i in items] ##change method here
+    sim = [rbo(itemLookup,i, .9) for i in items] ##change method here
 
     sim_scores = list(enumerate(sim))
 
