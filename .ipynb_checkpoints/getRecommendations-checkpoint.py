@@ -27,14 +27,15 @@ def get_COS_recommendations(df, product, column = 'product'):
     product_indices = [i[0] for i in sim_scores]
 
     # Return the top 10 most similar products and their ingredients
-    return df[['product', 'ingList']].iloc[product_indices]
+    return df[['product', 'ingList', 'ing#List']].iloc[product_indices]
 
 
 def get_A0_recommendations(df, product):
+    df['ing#List'] = [ast.literal_eval(i) for i in df['ing#List']]
     indices = pd.Series(df.index, index=df['product']).drop_duplicates()
     idx = indices[product]
 
-    itemLookup = df.iloc[idx]['ing#List']
+    itemLookup = df.loc[idx]['ing#List']
     items = df['ing#List']
     sim = [average_overlap(itemLookup,i) for i in items] ##change method here
 
@@ -49,17 +50,18 @@ def get_A0_recommendations(df, product):
     # Get the product indices
     product_indices = [i[0] for i in sim_scores]
 
-    return(df[['product', 'ingList']].iloc[product_indices])
+    return(df[['product', 'ingList', 'ing#List']].iloc[product_indices])
 
 
 
-def get_RBO_recommendations(df, product):
+def get_RBO_recommendations(df, product, rbo):
+    df['ing#List'] = [ast.literal_eval(i) for i in df['ing#List']]
     indices = pd.Series(df.index, index=df['product']).drop_duplicates()
     idx = indices[product]
 
-    itemLookup = df.iloc[idx]['ing#List']
+    itemLookup = df.loc[idx]['ing#List']
     items = df['ing#List']
-    sim = [rbo_ext(itemLookup,i, .99) for i in items] ##change method here
+    sim = [rbo(itemLookup,i, .99) for i in items] ##change method here
 
     sim_scores = list(enumerate(sim))
 
@@ -72,25 +74,5 @@ def get_RBO_recommendations(df, product):
     # Get the product indices
     product_indices = [i[0] for i in sim_scores]
 
-    return(df[['product', 'ingList']].iloc[product_indices])
+    return(df[['product', 'ingList', 'ing#List']].iloc[product_indices])
 
-def get_RBO2_recommendations(df, product):
-    indices = pd.Series(df.index, index=df['product']).drop_duplicates()
-    idx = indices[product]
-
-    itemLookup = df.iloc[idx]['ing#List']
-    items = df['ing#List']
-    sim = [calc_rbo(itemLookup,i, .99) for i in items] ##change method here
-
-    sim_scores = list(enumerate(sim))
-
-    # Sort the products based on the similarity scores
-    sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
-
-    # Get the scores of the 10 most similar products
-    sim_scores = sim_scores[1:11]
-
-    # Get the product indices
-    product_indices = [i[0] for i in sim_scores]
-
-    return(df[['product', 'ingList']].iloc[product_indices])
