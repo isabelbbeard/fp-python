@@ -1,16 +1,16 @@
 from RBO import *
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import linear_kernel, cosine_distances
+from sklearn.metrics.pairwise import linear_kernel, cosine_distances, additive_chi2_kernel
 import ast
 
 # Function that takes in product name as input and outputs most similar products
 def get_COS_recommendations(df, product, column = 'product'):
     # Get the index of the product that matches the product name
-    
+    df['ing#List'] = df['ing#List'].astype(str)
     tfidf = TfidfVectorizer(stop_words=[0])
     tfidf_matrix = tfidf.fit_transform(df['ing#List'])
-    cosine_sim = linear_kernel(tfidf_matrix, tfidf_matrix)
+    cosine_sim = additive_chi2_kernel(tfidf_matrix, tfidf_matrix)
     
     indices = pd.Series(df.index, index=df[column]).drop_duplicates()
     idx = indices[product]
@@ -32,7 +32,7 @@ def get_COS_recommendations(df, product, column = 'product'):
 
 
 def get_A0_recommendations(df, product):
-    df['ing#List'] = [ast.literal_eval(i) for i in df['ing#List']]
+    #df['ing#List'] = [ast.literal_eval(i) for i in df['ing#List']]
     indices = pd.Series(df.index, index=df['product']).drop_duplicates()
     idx = indices[product]
 
@@ -56,7 +56,7 @@ def get_A0_recommendations(df, product):
 
 
 def get_RBO_recommendations(df, product, rbo):
-    df['ing#List'] = [ast.literal_eval(i) for i in df['ing#List']]
+    #df['ing#List'] = [ast.literal_eval(i) for i in df['ing#List']]
     indices = pd.Series(df.index, index=df['product']).drop_duplicates()
     idx = indices[product]
 
@@ -81,6 +81,5 @@ def get_RBO_recommendations(df, product, rbo):
 def commonItems(product, topTen, df):
     indices = pd.Series(df.index, index=df['product']).drop_duplicates()
     idx = indices[product]
-    list1 = ast.literal_eval(df.loc[idx]['ingList'])
-    topTen['ingList'] = [ast.literal_eval(i) for i in topTen['ingList']]
+    list1 = df.loc[idx]['ingList']
     topTen['commonIng'] = [len(set(list1)&set(i)) for i in topTen['ingList']]
