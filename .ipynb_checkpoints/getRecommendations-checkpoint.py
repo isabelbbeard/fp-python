@@ -1,13 +1,20 @@
 import pandas as pd
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import linear_kernel, cosine_distances
 
 # Function that takes in product name as input and outputs most similar products
-def get_COS_recommendations(df, product, sim_matrix, column = 'product'):
+def get_COS_recommendations(df, product, column = 'product'):
     # Get the index of the product that matches the product name
+    
+    tfidf = TfidfVectorizer(stop_words=[0])
+    tfidf_matrix = tfidf.fit_transform(df['ing#List'])
+    cosine_sim = linear_kernel(tfidf_matrix, tfidf_matrix)
+    
     indices = pd.Series(df.index, index=df[column]).drop_duplicates()
     idx = indices[product]
 
     # Get the pairwsie similarity scores of all products with that product
-    sim_scores = list(enumerate(sim_matrix[idx]))
+    sim_scores = list(enumerate(cosine_sim[idx]))
 
     # Sort the products based on the similarity scores
     sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
