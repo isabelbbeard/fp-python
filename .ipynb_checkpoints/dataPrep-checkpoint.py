@@ -39,4 +39,8 @@ def dataPrep(ings, prods, prod_ing):
     
     #print('Number of products: ', len(products_and_ingredients))
     #print('Number of unique ingredients: ', len(ing_uniqueID))
+    #df.loc[df['id'] == idx]
+    products_and_ingredients['id2'] = products_and_ingredients['id']
+    products_and_ingredients = products_and_ingredients.drop(['id'], axis = 1)
+    products_and_ingredients = products_and_ingredients.rename(columns={'index': 'id'})
     return (products_and_ingredients)
