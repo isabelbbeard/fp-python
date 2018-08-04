@@ -38,7 +38,7 @@ def get_A0_recommendations(df, product):
 
     itemLookup = df.loc[idx]['ing#List']
     items = df['ing#List']
-    sim = [average_overlap(itemLookup,i, .9) for i in items] ##change method here
+    sim = [average_overlap(itemLookup,i) for i in items] ##change method here
 
     sim_scores = list(enumerate(sim))
 
