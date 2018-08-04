@@ -43,4 +43,5 @@ def dataPrep(ings, prods, prod_ing):
     products_and_ingredients['id2'] = products_and_ingredients['id']
     products_and_ingredients = products_and_ingredients.drop(['id'], axis = 1)
     products_and_ingredients = products_and_ingredients.rename(columns={'index': 'id'})
+    products_and_ingredients['ing#List'] = [ast.literal_eval(i) for i in products_and_ingredients['ing#List']]
     return (products_and_ingredients)
