@@ -28,7 +28,7 @@ def get_COS_recommendations(df, product, column = 'product'):
     product_indices = [i[0] for i in sim_scores]
 
     # Return the top 10 most similar products and their ingredients
-    return df[['product', 'ingList']].iloc[product_indices]
+    return df[['product', 'brand','ingList']].iloc[product_indices]
 
 
 def get_A0_recommendations(df, product):
@@ -38,7 +38,7 @@ def get_A0_recommendations(df, product):
 
     itemLookup = df.loc[idx]['ing#List']
     items = df['ing#List']
-    sim = [average_overlap(itemLookup,i, .9) for i in items] ##change method here
+    sim = [average_overlap(itemLookup,i) for i in items] ##change method here
 
     sim_scores = list(enumerate(sim))
 
@@ -51,7 +51,7 @@ def get_A0_recommendations(df, product):
     # Get the product indices
     product_indices = [i[0] for i in sim_scores]
 
-    return(df[['product', 'ingList']].iloc[product_indices])
+    return(df[['product', 'brand','ingList']].iloc[product_indices])
 
 
 
@@ -75,7 +75,7 @@ def get_RBO_recommendations(df, product, rbo):
     # Get the product indices
     product_indices = [i[0] for i in sim_scores]
 
-    return(df[['product', 'ingList']].iloc[product_indices])
+    return(df[['product', 'brand','ingList']].iloc[product_indices])
 
 
 def commonItems(product, topTen, df):
