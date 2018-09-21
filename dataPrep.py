@@ -45,3 +45,32 @@ def dataPrep(ings, prods, prod_ing):
     products_and_ingredients = products_and_ingredients.drop(['id'], axis = 1)
     products_and_ingredients = products_and_ingredients.rename(columns={'index': 'id'})
     return (products_and_ingredients)
+
+def getScores(list_of_values, ings):
+    ingScores = ings[ings['ingredient'].isin(list_of_values)]
+    ingScores = ingScores.iloc[0:, 0:2]
+    ingScores['toxLowrisk'] = 0
+    ingScores['toxMedRisk'] = 0
+    ingScores['toxHighRisk'] = 0
+    ingScores['toxNA'] = 0
+    ingScores = ingScores.reset_index()
+
+    for index, row in ingScores.iterrows():
+        #print(ingScores.iloc[index,1])
+        if ingScores.iloc[index,2] > 0 and ingScores.iloc[index,2] < 4:
+            ingScores.loc[index, 'toxLowrisk'] = 1
+            #print('low risk')
+        elif ingScores.iloc[index,2] > 3 and ingScores.iloc[index,2] < 7:
+            ingScores.loc[index, 'toxMedRisk'] = 1
+            #print('med risk')
+        elif ingScores.iloc[index,2] > 6:
+            ingScores.loc[index, 'toxHighRisk'] = 1
+            #print('med risk')       
+        else:
+            ingScores.loc[index, 'toxNA'] = 1
+
+    toxLowrisk = ingScores['toxLowrisk'].sum()/len(ingScores)
+    toxMedRisk = ingScores['toxMedRisk'].sum()/len(ingScores)
+    toxHighRisk = ingScores['toxHighRisk'].sum()/len(ingScores)
+    toxNA = ingScores['toxNA'].sum()/len(ingScores)
+    return [toxLowrisk, toxMedRisk, toxHighRisk, toxNA]
