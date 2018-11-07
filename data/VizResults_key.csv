@@ -1,0 +1,85 @@
+QID	Question
+Q1_1	V1_Information display - I understand all the information displayed on the page.
+Q1_2	V1_Information display - I understand the visual devices and what they represent displayed on the page.
+Q7_1	V1_Product view - The information displayed in this view is understandable.
+Q7_2	V1_Product view - The key  is easy to understand.
+Q7_3	V1_Product view - The colors used make the information easy to understand.
+Q11	V1_Is there any information or visual aspect you find confusing?
+Q9	V1_Is there any information you wish this area contained?
+Q10	V1_Is there any information you wish this area didn’t contain?
+Q12	V1_Which information or visual aspect do you find most useful?
+Q14_1	V1_Product results - The information displayed in this view is understandable.
+Q14_2	V1_Product results - The information displayed in this view is confusing.
+Q14_3	V1_Product results - I understand which products are cheaper.
+Q14_4	V1_Product results - I understand which products are more expensive.
+Q14_5	V1_Product results - I understand which products are more similar.
+Q14_6	V1_Product results - I understand which products are less similar.
+Q14_7	V1_Product results - I understand which products are less toxic.
+Q14_8	V1_Product results - I understand which products are more toxic.
+Q14_9	V1_Product results - I understand which products have a high rating (5 stars).
+Q14_10	V1_Product results - I understand which products have a low rating (1 star).
+Q17	V1_Is there any information displayed or visual aspect you find confusing?
+Q15	V1_Is there any information or visual aspect you wish this area contained?
+Q16	V1_Is there any information or visual aspect you wish this area didn’t contain?
+Q18	V1_Which information displayed or visual aspect do you find most useful?
+Q52	V1_Which product is most expensive?
+Q53	V1_Which product is most similar?
+Q54	V1_Point to a product that is more harmful than the chosen product.
+Q21_1	V2_Information display - I understand all the information displayed on the page.
+Q21_2	V2_Information display - I understand the visual devices and what they represent displayed on the page.
+Q23_1	V2_Product view - The information displayed in this view is understandable.
+Q23_2	V2_Product view - The key  is easy to understand.
+Q23_3	V2_Product view - The colors used make the information easy to understand.
+Q26	V2_Is there any information or visual aspect you find confusing?
+Q24	V2_Is there any information you wish this area contained?
+Q25	V2_Is there any information you wish this area didn’t contain?
+Q27	V2_Which information or visual aspect do you find most useful?
+Q29_1	V2_Product results - The information displayed in this view is understandable.
+Q29_2	V2_Product results - The information displayed in this view is confusing.
+Q29_3	V2_Product results - I understand which products are cheaper.
+Q29_4	V2_Product results - I understand which products are more expensive.
+Q29_5	V2_Product results - I understand which products are more similar.
+Q29_6	V2_Product results - I understand which products are less similar.
+Q29_7	V2_Product results - I understand which products are less toxic.
+Q29_8	V2_Product results - I understand which products are more toxic.
+Q29_9	V2_Product results - I understand which products have a high rating (5 stars).
+Q29_10	V2_Product results - I understand which products have a low rating (1 star).
+Q32	V2_Is there any information displayed or visual aspect you find confusing?
+Q30	V2_Is there any information or visual aspect you wish this area contained?
+Q31	V2_Is there any information or visual aspect you wish this area didn’t contain?
+Q33	V2_Which information displayed or visual aspect do you find most useful?
+Q62	V2_Which product is most expensive?
+Q64	V2_Which product is most similar?
+Q66	V2_Point to a product that is more harmful than the chosen product.
+Q35_1	V3_Information display - I understand all the information displayed on the page.
+Q35_2	V3_Information display - I understand the visual devices and what they represent displayed on the page.
+Q37_1	V3_Product view - The information displayed in this view is understandable.
+Q37_2	V3_Product view - The key  is easy to understand.
+Q37_3	V3_Product view - The colors used make the information easy to understand.
+Q40	V3_Is there any information or visual aspect you find confusing?
+Q38	V3_Is there any information you wish this area contained?
+Q39	V3_Is there any information you wish this area didn’t contain?
+Q41	V3_Which information or visual aspect do you find most useful?
+Q43_1	V3_Product results - The information displayed in this view is understandable.
+Q43_2	V3_Product results - The information displayed in this view is confusing.
+Q43_3	V3_Product results - I understand which products are cheaper.
+Q43_4	V3_Product results - I understand which products are more expensive.
+Q43_5	V3_Product results - I understand which products are more similar.
+Q43_6	V3_Product results - I understand which products are less similar.
+Q43_7	V3_Product results - I understand which products are less toxic.
+Q43_8	V3_Product results - I understand which products are more toxic.
+Q43_9	V3_Product results - I understand which products have a high rating (5 stars).
+Q43_10	V3_Product results - I understand which products have a low rating (1 star).
+Q46	V3_Is there any information displayed or visual aspect you find confusing?
+Q44	V3_Is there any information or visual aspect you wish this area contained?
+Q45	V3_Is there any information or visual aspect you wish this area didn’t contain?
+Q47	V3_Which information displayed or visual aspect do you find most useful?
+Q72	V3_Which product is most expensive?
+Q74	V3_Which product is most similar?
+Q68	V3_Point to a product that is more harmful than the chosen product.
+Q43	Con_Which version is most successful in displaying information in an understandable way?
+Q44	Con_Which version is least successful in displaying information in an understandable way?
+Q46	"Con_In your 'most successful' version, are there any aspects from the other versions you would like to see incorporated?"
+Q47	"Con_In your 'most successful' version, is there any additional information you would like to be shown?"
+Q48	"Con_In your 'most successful' version, is there anything you would like to be removed?"
+Q50	Con_Any last comments?
